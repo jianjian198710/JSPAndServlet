@@ -14,8 +14,8 @@
     <param-value>com.mysql.jdbc.Driver</param-value>
   </context-param>
   <context-param>
-  	<param-name>url</param-name>
-  	<param-value>jdbc:mysql://localhost:3306/jianjian</param-value>
+    <param-name>url</param-name>
+    <param-value>jdbc:mysql://localhost:3306/jianjian</param-value>
   </context-param>
   <context-param>
     <param-name>user</param-name>
