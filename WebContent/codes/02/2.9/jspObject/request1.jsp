@@ -1,31 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=GBK"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="java.nio.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GBK">
-<title>»ñÈ¡POSTÇëÇó²ÎÊı</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>è·å–POSTè¯·æ±‚å‚æ•°</title>
 </head>
 <body>
-<%
+<%	//request.setCharacterEncoding("utf-8");
 	Enumeration<String> headerNames = request.getParameterNames();
 	while(headerNames.hasMoreElements()){
 		String headerName = headerNames.nextElement();
 		out.println(headerName+"------>"+request.getParameter(headerName)+"<br/>");
 	}
 	out.println("<hr/>");
-	request.setCharacterEncoding("gbk");
-	//ÉèÖÃ±àÂë×Ö·û¼¯
-	String name = request.getCharacterEncoding();
-	String gender = new String(request.getParameter("gender").getBytes("ISO-8859-1"),"GBK");
-	//Èç¹ûÓĞ¶à¸öÏàÍ¬µÄÊôĞÔ,¸ÃÊôĞÔ»áÓĞ¶à¸öÖµ 
+	
+	//è®¾ç½®ç¼–ç å­—ç¬¦é›†
+	String name = request.getParameter("name");
+	String gender = request.getParameter("gender");
+	//å¦‚æœæœ‰å¤šä¸ªç›¸åŒçš„å±æ€§,è¯¥å±æ€§ä¼šæœ‰å¤šä¸ªå€¼ 
 	String[] colors = request.getParameterValues("color");
 	String national = request.getParameter("country");
 %>
-ÄúµÄÃû×Ö:<%=name%><br/>
-ÄúµÄĞÔ±ğ:<%=gender %><br/>
-ÄúÏ²»¶µÄÑÕÉ«:<%for(String color:colors){out.println(color+" ");} %>
-ÄúÀ´×ÔµÄ¹ú¼Ò:<%=national %><br/>
+æ‚¨çš„åå­—:<%=name%><br/>
+æ‚¨çš„æ€§åˆ«:<%=gender %><br/>
+æ‚¨å–œæ¬¢çš„é¢œè‰²:<%for(String color:colors){out.println(color+" ");} %>
+æ‚¨æ¥è‡ªçš„å›½å®¶:<%=national %><br/>
 </body>
 </html>

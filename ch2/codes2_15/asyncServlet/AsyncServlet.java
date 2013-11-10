@@ -1,15 +1,10 @@
-package codes2_10.ServletDemo;
-/**
- *  创建Servlet实例有两个时机
- *  (a)客户端第一次请求某个Servlet时,系统创建实例
- *  (b)load-on-startup Servlet
- */
-import java.io.IOException;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
+package codes2_15.asyncServlet;
 
-import javax.servlet.ServletConfig;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+
+import javax.servlet.AsyncContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,36 +12,37 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class TimerServlet
+ * (1)Servlet3.0规范引入了异步处理,允许Servlet重新发起一条新线程去调用耗时的业务方法以避免等待
+ * (2)异步处理通过AsynceContext类来处理,通过ServletRequest的startAsync()和startAsync(ServletRequest,ServletResponse)方法来创建
+ * (3)
  */
-@WebServlet(urlPatterns="/TimerServlet")
-public class TimerServlet extends HttpServlet {
+@WebServlet(urlPatterns="/async",asyncSupported=true)
+public class AsyncServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TimerServlet() {
+    public AsyncServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-    //重写init()方法,应在第一行调用super.init(config)
-    @Override
-    public void init(ServletConfig config)throws ServletException{
-    	super.init(config);
-    	Timer timer = new Timer();
-    	timer.schedule(new TimerTask(){
-			@Override
-			public void run() {
-				System.out.println(new Date());
-			}}, 0, 1000);
-    	
-    }
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println("<title>异步调用示例</title>");
+		out.println("进入Servlet的时间: "+new Date()+".<br/>");
+		out.flush();
+		AsyncContext actx = request.startAsync();
+		actx.addListener(new MyAsyncListener());
+		actx.setTimeout(30*1000);
+		actx.start(new Executor(actx));
+		out.println("结束Servlet的时间: "+new Date()+".<br/>");
+		out.flush();
 	}
 
 	/**

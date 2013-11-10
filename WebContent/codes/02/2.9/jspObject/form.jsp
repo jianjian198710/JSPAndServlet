@@ -1,29 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=GBK"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GBK">
-<title>ÊÕ¼¯²ÎÊýµÄ±íµ¥Ò³</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>æ”¶é›†å‚æ•°çš„è¡¨å•é¡µ</title>
 </head>
 <body>
-<form id="form1" method="GET" action="request2.jsp">
-ÓÃ»§Ãû:<br/>
+<form id="form1" method="POST" action="request1.jsp">
+ç”¨æˆ·å:<br/>
 <input type="text" name="name"><hr/>
-ÐÔ±ð:<br/>
-ÄÐ:<input type="radio" name="gender" value="ÄÐ">
-Å®:<input type="radio" name="gender" value="Å®"><hr/>
-Ï²»¶µÄÑÕÉ«:<br/>
-ºì:<input type="checkbox" name="color" value="ºì">
-ÂÌ:<input type="checkbox" name="color" value="ÂÌ">
-À¶:<input type="checkbox" name="color" value="À¶"><hr/>
-À´×ÔµÄ¹ú¼Ò:<br/>
+æ€§åˆ«:<br/>
+ç”·:<input type="radio" name="gender" value="ç”·">
+å¥³:<input type="radio" name="gender" value="å¥³"><hr/>
+å–œæ¬¢çš„é¢œè‰²:<br/>
+çº¢:<input type="checkbox" name="color" value="çº¢">
+ç»¿:<input type="checkbox" name="color" value="ç»¿">
+è“:<input type="checkbox" name="color" value="è“"><hr/>
+æ¥è‡ªçš„å›½å®¶:<br/>
 <select name="country">
-	<option value="ÖÐ¹ú">ÖÐ¹ú</option>
-	<option value="ÃÀ¹ú">ÃÀ¹ú</option>
-	<option value="ÈÕ±¾">ÈÕ±¾</option>
+	<option value="ä¸­å›½">ä¸­å›½</option>
+	<option value="ç¾Žå›½">ç¾Žå›½</option>
+	<option value="æ—¥æœ¬">æ—¥æœ¬</option>
 </select>
-<input type="submit" value="Ìá½»">
-<input type="reset" value="ÖØÖÃ">
+<input type="submit" value="æäº¤">
+<input type="reset" value="é‡ç½®">
 </form>
 </body>
 </html>

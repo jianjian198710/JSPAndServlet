@@ -1,0 +1,5 @@
+对于Servlet Annotation中的urlPattern属性 /作为根目录时,其代表的路径是http://localhost:8080/ProjectName/
+
+form表单中action中/代表http://localhost:8080/ 使用相对路径的基准则是form表单所在文件的位置
+
+RequestDispatcher中/与urlPattern属性一样 代表http://localhost:8080/ProjectName                                                                                                                                                                                                       
